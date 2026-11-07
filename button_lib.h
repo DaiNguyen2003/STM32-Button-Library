@@ -36,6 +36,7 @@ typedef struct {
     uint8_t waiting_for_release;
     uint8_t hold_triggered;
     uint32_t hold_time_ms;
+    uint32_t sample_changed_at;
 } ButtonHandle_t;
 
 /* ==================== FUNCTIONS ==================== */

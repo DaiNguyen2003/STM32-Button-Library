@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="427" viewBox="0 0 1080 427" role="img" aria-labelledby="title desc">
+  <title id="title">Đấu hai nút nhấn active-low</title>
+  <desc id="desc">PA1 · Pull-up – Nút 1 · Chân tín hiệu: Đọc nút 1; PA2 · Pull-up – Nút 2 · Chân tín hiệu: Đọc nút 2; GND – Chân còn lại của cả hai nút: Mass chung</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10Z" fill="#52657f"/>
+    </marker>
+    <style>
+      text { font-family: 'Segoe UI', Arial, sans-serif; fill: #182c47; }
+      .title { font-size: 36px; font-weight: 700; }
+      .heading { font-size: 22px; font-weight: 700; }
+      .label { font-size: 18px; font-weight: 700; }
+      .note { font-size: 16px; fill: #435a73; }
+      .edge { fill: none; stroke: #52657f; stroke-width: 2; }
+    </style>
+  </defs>
+  <rect width="1080" height="427" rx="24" fill="#f7f9fc"/>
+  <rect x="40" y="34" width="5" height="57" rx="2.5" fill="#245cae"/>
+  <text class="title" x="62" y="58">Đấu hai nút nhấn active-low</text>
+  <text class="note" x="63" y="87">Blue Pill · Dùng pull-up nội của STM32</text>
+  <rect x="40" y="112" width="320" height="232" rx="14" fill="#eaf2ff" stroke="#bccbdd"/>
+  <rect x="720" y="112" width="320" height="232" rx="14" fill="#f0ecfb" stroke="#bccbdd"/>
+  <text class="heading" x="62" y="148" text-anchor="start">STM32F103C8T6</text>
+  <text class="heading" x="742" y="148" text-anchor="start">Nút nhấn thường hở</text>
+  <path d="M40 164H360M720 164H1040" stroke="#bccbdd"/>
+  <path class="edge" d="M360 193H720" marker-start="url(#arrow)"/>
+  <text class="note" x="540" y="183" text-anchor="middle">Đọc nút 1</text>
+  <text class="label" x="340" y="199" text-anchor="end">PA1 · Pull-up</text>
+  <text class="label" x="740" y="199" text-anchor="start">Nút 1 · Chân tín hiệu</text>
+  <path class="edge" d="M360 245H720" marker-start="url(#arrow)"/>
+  <text class="note" x="540" y="235" text-anchor="middle">Đọc nút 2</text>
+  <text class="label" x="340" y="251" text-anchor="end">PA2 · Pull-up</text>
+  <text class="label" x="740" y="251" text-anchor="start">Nút 2 · Chân tín hiệu</text>
+  <path class="edge" d="M360 297H720"/>
+  <text class="note" x="540" y="287" text-anchor="middle">Mass chung</text>
+  <text class="label" x="340" y="303" text-anchor="end">GND</text>
+  <text class="label" x="740" y="303" text-anchor="start">Chân còn lại của cả hai nút</text>
+  <rect x="40" y="361" width="1000" height="42" rx="14" fill="#eaf6f2" stroke="#bccbdd"/>
+  <text class="note" x="58" y="388" text-anchor="start">Thả nút: mức cao. Nhấn nút: nối chân tín hiệu xuống GND.</text>
+
+</svg>

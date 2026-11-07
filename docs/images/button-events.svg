@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="326" viewBox="0 0 1080 326" role="img" aria-labelledby="title desc">
+  <title id="title">Từ tín hiệu GPIO đến sự kiện nút</title>
+  <desc id="desc">Lấy mẫu: Đọc mức GPIO, Chuẩn hóa active-low; Chống rung: Xác nhận cạnh ổn định, 50 ms; Phân loại: Cửa sổ click kép: 300 ms, Ngưỡng giữ: 500 ms; Ứng dụng: Single, double hoặc hold, Cập nhật LED PC13</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10Z" fill="#52657f"/>
+    </marker>
+    <style>
+      text { font-family: 'Segoe UI', Arial, sans-serif; fill: #182c47; }
+      .title { font-size: 36px; font-weight: 700; }
+      .heading { font-size: 22px; font-weight: 700; }
+      .label { font-size: 18px; font-weight: 700; }
+      .note { font-size: 16px; fill: #435a73; }
+      .edge { fill: none; stroke: #52657f; stroke-width: 2; }
+    </style>
+  </defs>
+  <rect width="1080" height="326" rx="24" fill="#f7f9fc"/>
+  <rect x="40" y="34" width="5" height="57" rx="2.5" fill="#245cae"/>
+  <text class="title" x="62" y="58">Từ tín hiệu GPIO đến sự kiện nút</text>
+  <text class="note" x="63" y="87">Polling không chặn · Một handle cho mỗi nút</text>
+  <rect x="40" y="126" width="232" height="112" rx="14" fill="#eaf2ff" stroke="#bccbdd"/>
+  <text class="label" x="156.0" y="157" text-anchor="middle">Lấy mẫu</text>
+  <text class="note" x="156.0" y="185" text-anchor="middle">Đọc mức GPIO</text>
+  <text class="note" x="156.0" y="207" text-anchor="middle">Chuẩn hóa active-low</text>
+  <path class="edge" d="M272 182h20" marker-end="url(#arrow)"/>
+  <rect x="296" y="126" width="232" height="112" rx="14" fill="#f0ecfb" stroke="#bccbdd"/>
+  <text class="label" x="412.0" y="157" text-anchor="middle">Chống rung</text>
+  <text class="note" x="412.0" y="185" text-anchor="middle">Xác nhận cạnh ổn định</text>
+  <text class="note" x="412.0" y="207" text-anchor="middle">50 ms</text>
+  <path class="edge" d="M528 182h20" marker-end="url(#arrow)"/>
+  <rect x="552" y="126" width="232" height="112" rx="14" fill="#eaf6f2" stroke="#bccbdd"/>
+  <text class="label" x="668.0" y="157" text-anchor="middle">Phân loại</text>
+  <text class="note" x="668.0" y="185" text-anchor="middle">Cửa sổ click kép: 300 ms</text>
+  <text class="note" x="668.0" y="207" text-anchor="middle">Ngưỡng giữ: 500 ms</text>
+  <path class="edge" d="M784 182h20" marker-end="url(#arrow)"/>
+  <rect x="808" y="126" width="232" height="112" rx="14" fill="#fff8e8" stroke="#bccbdd"/>
+  <text class="label" x="924.0" y="157" text-anchor="middle">Ứng dụng</text>
+  <text class="note" x="924.0" y="185" text-anchor="middle">Single, double hoặc hold</text>
+  <text class="note" x="924.0" y="207" text-anchor="middle">Cập nhật LED PC13</text>
+  <rect x="40" y="258" width="1000" height="42" rx="14" fill="#eaf6f2" stroke="#bccbdd"/>
+  <text class="note" x="58" y="285" text-anchor="start">Gọi Button_GetEvent() thường xuyên trong vòng lặp chính.</text>
+
+</svg>
