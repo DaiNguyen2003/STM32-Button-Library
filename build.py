@@ -7,7 +7,7 @@ import subprocess
 ROOT = Path(__file__).resolve().parent
 SDK_DEFAULT = Path.home() / "STM32Cube/Repository/STM32Cube_FW_F1_V1.8.7"
 MODULES = ('cortex', 'gpio', 'rcc', 'rcc_ex', 'flash', 'flash_ex')
-APPLICATION = ('main_example.c', 'button_lib.c')
+APPLICATION = ('Core/Src/main.c', 'Core/Src/button_lib.c')
 
 
 def main():
@@ -39,7 +39,7 @@ def main():
             executable = str(args.toolchain.resolve() / executable)
         subprocess.run([executable, *map(str, options)], check=True, cwd=ROOT)
 
-    includes = [build, ROOT / "firmware", ROOT, ROOT / "Core/Inc",
+    includes = [build, ROOT / "Core/Inc",
                 hal / "Inc", cmsis / "Include", device / "Include"]
     hal_sources = ["stm32f1xx_hal", *(f"stm32f1xx_hal_{module}" for module in MODULES)]
     elf = build / "firmware.elf"

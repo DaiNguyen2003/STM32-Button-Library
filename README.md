@@ -1,20 +1,14 @@
-# STM32 Button Library · Click, double click và giữ
+# STM32 Button · Nhận click đơn, click kép và nhấn giữ
+
+## Tổng quan
 
 Thư viện C cho **STM32F1 HAL** nhận sự kiện từ nhiều nút, mỗi nút dùng một handle riêng. Demo Blue Pill dùng hai nút active-low và LED PC13 để hiển thị sự kiện. Chống rung dùng tick và cho phép vòng lặp tiếp tục xử lý nút còn lại.
 
+## Phần cứng
+
 ![Đấu hai nút thường hở vào PA1 và PA2 với pull-up nội](docs/images/button-wiring.svg)
 
-## Chạy demo
-
 Nối một nút thường hở giữa **PA1 và GND** và nút còn lại giữa **PA2 và GND**. Firmware bật pull-up nội. LED PC13 trên mẫu Blue Pill sáng khi chân ở mức thấp.
-
-| Thao tác trên một nút | Kết quả demo |
-| --- | --- |
-| Một click | Đảo trạng thái LED sau khi hết cửa sổ click kép. |
-| Hai click liên tiếp | Tắt LED khi lần nhấn thứ hai được thả. |
-| Giữ từ 500 ms | Bật LED, phát một sự kiện mỗi lần giữ. |
-
-Các mảng `single_click_count`, `double_click_count` và `hold_count` giúp xem kết quả riêng của từng nút trong debugger.
 
 ## Build và nạp firmware
 
@@ -34,41 +28,29 @@ Build tạo `build/firmware.elf`, `build/firmware.hex` và `build/firmware.bin`.
 
 Tài liệu công cụ: [STM32CubeF1](https://github.com/STMicroelectronics/STM32CubeF1) · [STM32CubeProgrammer](https://www.st.com/en/development-tools/stm32cubeprog.html).
 
-## Tích hợp thư viện
+## Chạy thử
 
-Thêm [`button_lib.c`](button_lib.c) vào build và đặt [`button_lib.h`](button_lib.h) trong include path. Cấu hình GPIO trước khi gọi `Button_Init()`. Ví dụ active-low:
-
-```c
-ButtonHandle_t button;
-Button_Init(&button, GPIOA, GPIO_PIN_1, 1);
-
-/* Gọi trong vòng lặp chính. */
-ButtonEvent_t event = Button_GetEvent(&button);
-```
-
-![Luồng lấy mẫu, chống rung và phân loại nút](docs/images/button-events.svg)
-
-| API hoặc tham số | Ý nghĩa |
+| Thao tác trên một nút | Kết quả demo |
 | --- | --- |
-| `Button_GetEvent()` | Gọi thường xuyên, chẳng hạn mỗi 5 ms. Trả `BTN_NONE` nếu chưa có sự kiện. |
-| `Button_IsPressed()` | Trạng thái nhấn đã qua chống rung, cập nhật bởi lần polling gần nhất. |
-| `Button_GetHoldTime()` | Thời gian giữ hiện tại tính bằng ms. Trả 0 sau khi xác nhận thả. |
-| `BTN_DEBOUNCE_TIME` | 50 ms để xác nhận một cạnh. |
-| `BTN_DOUBLE_CLICK_TIME` | 300 ms từ cạnh thả đầu đến cạnh nhấn thứ hai. |
-| `BTN_HOLD_TIME` | 500 ms, tính từ cạnh nhấn đã được xác nhận. |
+| Một click | Đảo trạng thái LED sau khi hết cửa sổ click kép. |
+| Hai click liên tiếp | Tắt LED khi lần nhấn thứ hai được thả. |
+| Giữ từ 500 ms | Bật LED, phát một sự kiện mỗi lần giữ. |
 
-Xem [ứng dụng mẫu](main_example.c) để dùng hai handle. Nếu nút luôn báo nhấn, kiểm tra cấu hình pull-up và tham số active-low.
+Các mảng `single_click_count`, `double_click_count` và `hold_count` giúp xem kết quả riêng của từng nút trong debugger.
 
-## Kiểm thử trên máy tính
+## Cấu trúc dự án
 
-Kiểm thử [logic nút nhấn](tests/test_button.c) với GPIO và tick giả lập. Dùng trình biên dịch C11 cho máy tính, chẳng hạn GCC hoặc Clang.
+| Đường dẫn | Vai trò |
+| --- | --- |
+| [`Core/Inc/`](Core/Inc/) | Header ứng dụng và thư viện. |
+| [`Core/Src/`](Core/Src/) | Demo hai nút và thư viện chống rung. |
+| [`firmware/`](firmware/) | Khởi tạo phần cứng, SysTick và linker script. |
+| [`docs/`](docs/) | Hướng dẫn kỹ thuật và sơ đồ SVG trong `docs/images/`. |
+| [`build.py`](build.py) | Build firmware từ mã nguồn. |
+| [`tests/`](tests/) | Kiểm thử logic chạy trên máy tính. |
 
-```sh
-mkdir -p build
-cc -std=c11 -Itests -I. button_lib.c tests/test_button.c -o build/test_button
-./build/test_button
-```
+## Tài liệu
 
-## Giấy phép
+- [Hướng dẫn kỹ thuật](docs/CODE_GUIDE.md).
 
-MIT, theo khai báo của dự án.
+**Giấy phép**  MIT, theo khai báo của dự án.
